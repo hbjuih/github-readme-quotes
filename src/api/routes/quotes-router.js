@@ -88,11 +88,16 @@
  *           schema:
  *             $ref: "#/components/schemas/animation"
  *           description: Adds an animation to your quote. Default value will return a quote with no animation.
- *         - name: customQuote
+ *         - name: quotesUrl
  *           in: query
  *           schema:
  *             type: string
  *           description: The URL of a custom quote. The quote must be uploaded to any public repository using [this](https://github.com/zhravan/github-readme-quotes/blob/main/customQuotes/quotes.json) format.
+ *         - name: quote
+ *           in: query
+ *           schema:
+ *             type: string
+ *           description: Shows custom quote text instead of random quote.
  *         - name: quoteCategory
  *           in: query
  *           schema:

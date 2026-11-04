@@ -4,6 +4,7 @@ const cardTemplate = require("../../utils/generateTemplate");
 const Template = require("../../models/Template");
 const getValidUrl = require("../../utils/validateUrl");
 const quoteFromCategory = require('../../../customQuotes/category.json');
+const escapeHtml = require('escape-html');
 
 getQuoteIndex = (apiResponseLength, quoteType) => {
   // Determine the quote index
@@ -15,12 +16,16 @@ getQuoteIndex = (apiResponseLength, quoteType) => {
 const getQuote = async (quoteObj) => {
 
   try {
-    let { theme, animation, layout, quotesUrl, quoteCategory, font, quoteType, borderColor, bgSource, unsplashQuery } = quoteObj;
+    let { theme, animation, layout, quotesUrl, quoteCategory, font, quoteType, borderColor, bgSource, unsplashQuery, customQuote } = quoteObj;
     let apiResponse;
     let { customQuotesUrl, isValidUrl } = await getValidUrl(quotesUrl);
     let isCustomQuote = false;
+    if (customQuote) {
+      apiResponse = { quote: escapeHtml(customQuote), author: 'Unknown' };
+      isCustomQuote = true;
+    }
 
-    if (isValidUrl) {
+    else if (isValidUrl) {
       //url from params is valid, proceed to verfiy the data
       apiResponse = await requestApi(customQuotesUrl);
 
