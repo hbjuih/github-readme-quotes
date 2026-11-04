@@ -254,6 +254,16 @@ You can also provide a file with the list of quotes and a random quote will be g
 ![Quote](https://github-readme-quotes-bay.vercel.app/quote?quotesUrl=https://github.com/ShubhKotnala/github-readme-quotes/blob/custom-quotes/customQuotes/quotes.json)
 
 ---
+- ### Custom Quote Text
+To show your custom quote without hosting a JSON file, use the 'quote' URL parameter.
+For example:
+
+```md
+![Quote](https://github-readme-quotes-bay.vercel.app/quote?quote=Hello%20World&theme=dark)
+```
+
+---
+
 
 - ### Category based Quotes
 

@@ -18,6 +18,7 @@ const initiateServer = async () => {
   app.use(bodyParser.urlencoded({ extended: false }));
 
   app.use(morgan("dev"));
+  routes(app);
 
   if (process.env.NODE_ENV === "PRODUCTION") {
     app.use(express.static(path.join(__dirname, "../", "frontend", "build")));
@@ -28,7 +29,6 @@ const initiateServer = async () => {
       );
     });
   }
-  routes(app);
 
   // Serve SwaggerUi docs
   await swaggerDocs(app);

@@ -38,6 +38,9 @@ const quoteController = async (req, res, next) => {
     let quoteType = req.query.quoteType || '';
     let unsplashQuery = req.query.unsplashQuery || '';
 
+    let customQuote = typeof req.query.quote === 'string' ? req.query.quote.trim() : '';
+
+
     let quoteObject = {
       theme,
       animation,
@@ -48,7 +51,8 @@ const quoteController = async (req, res, next) => {
       quoteType,
       borderColor,
       bgSource,
-      unsplashQuery
+      unsplashQuery,
+      customQuote
     }
 
     let svgResponse = await quoteService.getQuote(quoteObject);
